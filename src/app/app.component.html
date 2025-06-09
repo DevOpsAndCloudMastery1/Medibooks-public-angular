@@ -1,0 +1,33 @@
+<div class="app-container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center" routerLink="/">
+            <img src="images/MediBooks-Logo-1.png" alt="MediBooks Logo" width="50" height="50" class="me-2">
+            <span>MediBooks</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto d-flex flex-row">
+                <li class="nav-item px-2"><a class="nav-link active" routerLink="/">Home</a></li>
+                <li class="nav-item px-2"><a class="nav-link" routerLink="/doctor-search">Search Doctors</a></li>
+                <li class="nav-item px-2"><a class="nav-link" routerLink="/appointment-booking">Appointments</a></li>
+                <li class="nav-item px-2"><a class="nav-link" routerLink="/appointment-management">Manage Appointments</a></li>
+                <li class="nav-item px-2"><a class="nav-link" routerLink="/user-profile">Profile</a></li>
+                <li class="nav-item px-2"><a class="nav-link" routerLink="/doctor-reviews">Doctor Reviews</a></li>
+                <li class="nav-item px-2"><a class="nav-link" routerLink="/login">Sign Out</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <router-outlet></router-outlet>
+</main> 
+
+<footer>
+    © 2024 MediBooks. All rights reserved.
+</footer>
+
+</div>

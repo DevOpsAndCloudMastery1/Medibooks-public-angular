@@ -1,0 +1,28 @@
+<div class="container mt-4">
+    <h1 class="text-center">MediBooks - Find Your Doctor</h1>
+
+ <div class="text-center mb-4">
+    <a routerLink="/add-doctor" class="btn btn-success">Add New Doctor</a>
+  </div>
+
+    <!-- Debug info to check if doctors are loaded -->
+  <p *ngIf="filteredDoctors.length === 0" class="text-center text-danger">No doctors found.</p>
+  <p *ngIf="filteredDoctors.length > 0" class="text-center text-success">Total doctors: {{ filteredDoctors.length }}</p>
+  
+    <div class="search-container text-center my-4">
+      <input type="text" id="search-doctor" class="search-bar" placeholder="Search by name or specialty..." [(ngModel)]="searchTerm">
+    </div>
+  
+    <div class="row" id="doctor-list">
+      <div class="col-md-4" *ngFor="let doctor of filteredDoctors">
+        <div class="doctor-card">
+          <img [src]="'assets/images/' + getImagePath(doctor.img)" [alt]="doctor.name" class="img-fluid">
+          <h3>{{ doctor.name }}</h3>
+          <p>{{ doctor.specialization }}</p>
+          <a [routerLink]="['/doctor-details', doctor.id]" class="btn btn-primary">More Details</a>
+          <a [routerLink]="['/edit-doctor', doctor.id]" class="btn btn-warning me-2">Edit</a>
+          <button (click)="deleteDoctor(doctor.id)" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>

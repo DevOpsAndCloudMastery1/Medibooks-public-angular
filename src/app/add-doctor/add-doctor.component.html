@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <form (ngSubmit)="addDoctor()" #doctorForm="ngForm">
+    <div class="form-group mb-3">
+      <input type="text" class="form-control" placeholder="Name" required [(ngModel)]="newDoctor.name" name="name" />
+    </div>
+
+    <div class="form-group mb-3">
+      <input type="text" class="form-control" placeholder="Image URL" [(ngModel)]="newDoctor.img" name="img" />
+    </div>
+
+    <div class="form-group mb-3">
+      <input type="text" class="form-control" placeholder="Specialization" required [(ngModel)]="newDoctor.specialization" name="specialization" />
+    </div>
+
+    <div class="form-group mb-3">
+      <input type="text" class="form-control" placeholder="Experience" [(ngModel)]="newDoctor.experience" name="experience" />
+    </div>
+
+    <div class="form-group mb-3">
+      <input type="text" class="form-control" placeholder="Location" [(ngModel)]="newDoctor.location" name="location" />
+    </div>
+
+    <div class="form-group mb-3">
+      <textarea class="form-control" rows="3" placeholder="Description" [(ngModel)]="newDoctor.description" name="description"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-success w-100">Add Doctor</button>
+  </form>
+
+  <!-- Success Message -->
+  <div *ngIf="submitted" class="alert alert-success text-center mt-3">
+    Doctor added successfully!
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="alert alert-danger text-center mt-3">
+    {{ errorMessage }}
+  </div>
+</div>

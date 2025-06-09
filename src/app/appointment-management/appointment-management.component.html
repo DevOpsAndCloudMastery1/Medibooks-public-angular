@@ -1,0 +1,71 @@
+<div class="container mt-4">
+  <h1 class="text-center mb-4">Book and Manage Appointments</h1>
+
+  <section class="mb-5">
+    <h2>Available Doctors</h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+      <div class="col mb-4" *ngFor="let doctor of availableDoctors; let i = index">
+        <div class="card">
+          <img [src]="doctor.image" class="card-img-top" alt="{{doctor.name}}">
+          <div class="card-body">
+            <h5 class="card-title">{{doctor.name}}</h5>
+            <p class="card-text">{{ doctor.specialization }}</p>
+            <button class="btn btn-primary" (click)="selectDoctor(doctor.name + ' - ' + doctor.specialization)">Book Appointment</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Book an Appointment</h2>
+    <form (ngSubmit)="bookAppointment()">
+      <div class="mb-3">
+        <label for="doctor" class="form-label">Selected Doctor:</label>
+        <input type="text" id="doctor" name="doctor" class="form-control" [(ngModel)]="selectedDoctor" readonly required>
+      </div>
+      <div class="mb-3">
+        <label for="patient-name" class="form-label">Your Name:</label>
+        <input type="text" id="patient-name" name="patientName" class="form-control" [(ngModel)]="patientName" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Your Email:</label>
+        <input type="email" id="email" name="email" class="form-control" [(ngModel)]="email" required>
+      </div>
+      <div class="mb-3">
+        <label for="appointment-date" class="form-label">Appointment Date:</label>
+        <input type="date" id="appointment-date" name="appointmentDate" class="form-control" [(ngModel)]="appointmentDate" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+      <div id="confirmation" class="mt-4" *ngIf="appointmentConfirmed">
+        <h3>Appointment Confirmed!</h3>
+        <p><strong>Doctor:</strong> {{selectedDoctor}}</p>
+        <p><strong>Name:</strong> {{patientName}}</p>
+        <p><strong>Email:</strong> {{email}}</p>
+        <p><strong>Date:</strong> {{appointmentDate}}</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Appointment Tracking and Management</h2>
+    <div class="mb-4">
+      <h3>Active Bookings</h3>
+      <ul id="active-bookings" class="list-group">
+        <li class="list-group-item" *ngFor="let booking of activeBookings; let i = index">
+          {{booking.doctor}} - {{booking.date}} at {{booking.time}} - {{booking.status}}
+          <button class="btn btn-warning btn-sm ms-2" (click)="reschedule(i)">Reschedule</button>
+          <button class="btn btn-danger btn-sm ms-2" (click)="cancel(i)">Cancel</button>
+        </li>
+      </ul>
+    </div>
+    <div class="mb-4">
+      <h3>Past Bookings</h3>
+      <ul id="past-bookings" class="list-group">
+        <li class="list-group-item" *ngFor="let booking of pastBookings">
+          {{booking.doctor}} - {{booking.date}} - {{booking.status}}
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>

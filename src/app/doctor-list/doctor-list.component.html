@@ -1,0 +1,29 @@
+<div class="container mt-5">
+  <h3>Doctor List</h3>
+
+  <div *ngIf="doctors.length === 0" class="alert alert-warning text-center">
+    No doctors found.
+  </div>
+
+  <div *ngFor="let doctor of doctors" class="card p-3 mb-4 shadow-sm">
+    <div class="row">
+      <div class="col-md-2 text-center">
+        <img [src]="doctor.img" alt="{{ doctor.name }}" class="img-thumbnail" style="width: 100px; height: 100px;" />
+      </div>
+      <div class="col-md-8">
+       <div class="card-body">
+          <h5 class="card-title">{{ doctor.name }}</h5>
+          <p class="card-text mb-1"><strong>Specialization:</strong> {{ doctor.specialization }}</p>
+          <p class="card-text mb-1"><strong>Experience:</strong> {{ doctor.experience }}</p>
+          <p class="card-text mb-1"><strong>Location:</strong> {{ doctor.location }}</p>
+          <p class="card-text"><strong>Description:</strong> {{ doctor.description }}</p>
+        </div>
+      </div>
+
+      <div class="col-md-2 d-flex flex-column justify-content-center">
+        <button class="btn btn-primary mb-2" (click)="editDoctor(doctor.id)">Edit</button>
+        <button class="btn btn-primary" (click)="deleteDoctor(doctor.id)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

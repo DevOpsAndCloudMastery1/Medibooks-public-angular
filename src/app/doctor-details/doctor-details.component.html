@@ -1,0 +1,28 @@
+<div class="container mt-4" *ngIf="doctor">
+  <h1 class="text-center">MediBooks - Doctor Details</h1>
+
+  <div class="doctor-profile">
+    <img id="doctor-img"
+         [src]="doctor.img"
+         [alt]="doctor.name"
+         class="img-thumbnail mb-3"
+         style="width: 150px; height: 150px;" />
+
+    <h2 id="doctor-name">{{ doctor.name }}</h2>
+
+    <p><strong>Specialization:</strong> {{ doctor.specialization }}</p>
+    <p><strong>Experience:</strong> {{ doctor.experience }}</p>
+    <p><strong>Location:</strong> {{ doctor.location }}</p>
+    <p><strong>Description:</strong> {{ doctor.description }}</p>
+
+    <a [routerLink]="['/appointment-booking']"
+       [queryParams]="{ id: doctor.id }"
+       class="btn btn-primary mt-3">
+      Book Appointment
+    </a>
+  </div>
+</div>
+
+<div *ngIf="!doctor && errorMessage" class="text-center text-danger mt-4">
+  {{ errorMessage }}
+</div>

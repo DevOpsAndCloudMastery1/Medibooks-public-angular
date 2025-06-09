@@ -1,0 +1,36 @@
+.appointment-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .doctor-details, .appointment-form {
+    width: 50%;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .confirmation-box {
+    margin-top: 20px;
+    padding: 20px;
+    background: #e9f5e9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    font-weight: bold;
+  }
+  
+  .btn-primary {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.1rem;
+  }
+  

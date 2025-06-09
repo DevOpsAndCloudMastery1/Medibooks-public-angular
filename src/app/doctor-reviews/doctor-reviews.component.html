@@ -1,0 +1,47 @@
+<div class="container content">
+    <h1 class="text-center mb-4">Doctor Reviews</h1>
+  
+    <!-- Select Doctor Dropdown -->
+    <div class="mb-4">
+      <label for="doctor-select">Select Doctor:</label>
+      <select id="doctor-select" class="form-select" [(ngModel)]="selectedDoctor">
+        <option value="Dr. John Smith">Dr. John Smith</option>
+        <option value="Dr. Emma Davis">Dr. Emma Davis</option>
+        <option value="Dr. Michael Brown">Dr. Michael Brown</option>
+        <option value="Dr. Olivia Wilson">Dr. Olivia Wilson</option>
+        <option value="Dr. Liam Johnson">Dr. Liam Johnson</option>
+        <option value="Dr. Sophia Martinez">Dr. Sophia Martinez</option>
+      </select>
+      <button class="btn btn-primary mt-2" (click)="loadReviews()">Load Reviews</button>
+    </div>
+  
+    <div class="card">
+      <div class="card-body">
+        <h5 id="doctor-name" class="card-title">Reviews for {{ selectedDoctor }}</h5>
+        <h5>Leave a Review</h5>
+        <label for="rating">Rating (1-5):</label>
+        <select id="rating" class="form-select mb-2" [(ngModel)]="newReview.rating">
+          <option value="5">⭐⭐⭐⭐⭐ (5)</option>
+          <option value="4">⭐⭐⭐⭐ (4)</option>
+          <option value="3">⭐⭐⭐ (3)</option>
+          <option value="2">⭐⭐ (2)</option>
+          <option value="1">⭐ (1)</option>
+        </select>
+        <label for="review-text">Your Review:</label>
+        <textarea id="review-text" class="form-control mb-2" placeholder="Write your feedback here..." [(ngModel)]="newReview.text" required></textarea>
+        <button class="btn btn-primary" (click)="submitReview()">Submit Review</button>
+      </div>
+    </div>
+    <div class="card mt-3">
+      <div class="card-body">
+        <h5 class="card-title">Reviews</h5>
+        <ul id="reviews-list" class="list-group">
+          <li class="list-group-item" *ngFor="let review of reviews">
+            <strong>{{ review.rating }} ⭐</strong> - {{ review.text }} <br />
+            <em>{{ review.date }}</em>
+          </li>
+        </ul>
+      </div>
+    </div>
+      <button class="btn btn-secondary mt-3" (click)="goToHome()">Go to Home</button>
+  </div>
