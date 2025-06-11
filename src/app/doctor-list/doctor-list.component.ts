@@ -26,8 +26,8 @@ ngOnInit(): void {
     this.http.get<any[]>('http://192.168.0.63:3000/api/doctors').subscribe({
       next: (data) => {
         console.log('API response:', data);
-        // ✅ Extract from [{ doctors: [...] }]
-        this.doctors = Array.isArray(data[0]?.doctors) ? data[0].doctors : [];
+        // ✅ Directly assign the array of doctors from the DB
+      this.doctors = data;
       },
       error: (err) => {
         console.error('Failed to load doctors:', err);
