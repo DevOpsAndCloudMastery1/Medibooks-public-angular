@@ -27,14 +27,17 @@ export class DoctorSearchComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    // Fetch doctors from backend
-    this.http.get<{ doctors: Doctor[] }[]>('http://192.168.0.63:3000/api/doctors')
+    this.loadDoctors();
+  }
+
+  loadDoctors(): void {
+    this.http.get<Doctor[]>('http://192.168.0.63:3000/api/doctors')
       .subscribe({
         next: (data) => {
           console.log('API Response:', data); // Debug
-          this.doctors = Array.isArray(data[0]?.doctors) ? data[0].doctors : [];
+          this.doctors = data;
           console.log('Assigned doctors:', this.doctors); // Debug
-          this.filteredDoctors = [...this.doctors];
+          this.filteredDoctors = data;
         },
         error: (err) => {
           console.error('Error loading doctors:', err);
