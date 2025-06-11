@@ -20,8 +20,8 @@
           <h3>{{ doctor.name }}</h3>
           <p>{{ doctor.specialization }}</p>
           <a [routerLink]="['/doctor-details', doctor.id]" class="btn btn-primary">More Details</a>
-          <a [routerLink]="['/edit-doctor', doctor.id]" class="btn btn-warning me-2">Edit</a>
-          <button (click)="deleteDoctor(doctor.id)" class="btn btn-danger">Delete</button>
+          <a [routerLink]="['/edit-doctor', doctor.id]" class="btn btn-primary">Edit</a>
+          <button (click)="deleteDoctor(doctor.id)" class="btn btn-primary">Delete</button>
         </div>
       </div>
     </div>
